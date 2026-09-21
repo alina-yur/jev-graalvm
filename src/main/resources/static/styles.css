@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@500;600;700;800&display=swap');
+
+:root { --ink:#11130f; --paper:#f2f0e8; --acid:#e9ff4f; --orange:#ff6846; --line:rgba(17,19,15,.22); }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:Manrope, sans-serif; }
+.topbar { height:76px; padding:0 clamp(22px,4vw,64px); display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--ink); }
+.brand { color:var(--ink); text-decoration:none; font-size:24px; font-weight:800; letter-spacing:-1.5px; }
+.brand span { color:var(--orange); }
+.status { display:flex; gap:10px; align-items:center; font:500 11px DM Mono, monospace; letter-spacing:.1em; }
+.status i { width:8px; height:8px; border-radius:50%; background:var(--orange); box-shadow:0 0 0 4px rgba(255,104,70,.16); }
+main { min-height:calc(100vh - 120px); }
+.hero { min-height:590px; display:grid; grid-template-columns:1.1fr .9fr; border-bottom:1px solid var(--ink); }
+.intro, .decision-form { padding:clamp(42px,7vw,92px) clamp(24px,6vw,88px); }
+.intro { border-right:1px solid var(--ink); background:var(--acid); }
+.eyebrow, legend, .field-label { margin:0 0 18px; font:500 11px DM Mono,monospace; letter-spacing:.12em; text-transform:uppercase; }
+h1 { margin:0; font-size:clamp(56px,8.5vw,126px); line-height:.79; letter-spacing:-.08em; font-weight:800; }
+h1 em { color:var(--orange); font-style:normal; }
+.lede { max-width:570px; margin:42px 0 0; font-size:clamp(17px,2vw,22px); line-height:1.45; }
+.decision-form { display:flex; flex-direction:column; justify-content:center; }
+.location-wrap { display:flex; align-items:center; border-bottom:2px solid var(--ink); margin-bottom:42px; }
+.location-wrap span { font-size:24px; }
+.location-wrap input { width:100%; border:0; outline:0; background:transparent; padding:12px 14px 14px; font:700 clamp(28px,4vw,46px) Manrope,sans-serif; letter-spacing:-.04em; }
+fieldset { border:0; padding:0; margin:0 0 30px; }
+.options { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.mood-options { grid-template-columns:repeat(4,1fr); }
+.options input { position:absolute; opacity:0; pointer-events:none; }
+.options label { min-height:48px; display:grid; place-items:center; border:1px solid var(--ink); cursor:pointer; font-size:13px; font-weight:700; transition:.16s; }
+.options label:hover { transform:translateY(-2px); }
+.options input:checked + label { background:var(--ink); color:white; }
+.options input:focus-visible + label { outline:3px solid var(--orange); outline-offset:2px; }
+.decide-button { margin-top:10px; width:100%; min-height:70px; border:1px solid var(--ink); background:var(--orange); color:var(--ink); display:flex; align-items:center; justify-content:space-between; padding:0 24px; cursor:pointer; font:800 15px Manrope,sans-serif; letter-spacing:.05em; box-shadow:7px 7px 0 var(--ink); transition:.15s; }
+.decide-button:hover { transform:translate(3px,3px); box-shadow:4px 4px 0 var(--ink); }
+.decide-button b { font-size:27px; }
+.decide-button:disabled { cursor:wait; filter:saturate(.25); }
+.form-error { min-height:20px; margin:18px 0 -10px; color:#a51d00; font:500 12px DM Mono,monospace; }
+.result-section { display:grid; grid-template-columns:1fr 2fr; min-height:620px; }
+.weather-strip { border-right:1px solid var(--ink); display:grid; grid-template-rows:repeat(3,1fr); }
+.weather-strip div { padding:30px clamp(24px,4vw,56px); display:flex; flex-direction:column; justify-content:space-between; border-bottom:1px solid var(--ink); }
+.weather-strip div:last-child { border:0; }
+.weather-strip span, .recommendation span { font:500 11px DM Mono,monospace; text-transform:uppercase; letter-spacing:.12em; }
+.weather-strip strong { font-size:clamp(42px,6vw,80px); letter-spacing:-.07em; }
+.weather-strip small { font-size:14px; letter-spacing:0; }
+.verdict-card { position:relative; overflow:hidden; padding:clamp(32px,5vw,72px); background:var(--ink); color:white; }
+.verdict-card::after { content:""; position:absolute; width:360px; height:360px; border:80px solid var(--acid); border-radius:50%; right:-170px; top:80px; opacity:.95; }
+.verdict-top { display:flex; justify-content:space-between; font:500 11px DM Mono,monospace; letter-spacing:.12em; }
+.verdict-icon { margin-top:55px; color:var(--acid); font-size:50px; }
+.verdict-card h2 { position:relative; z-index:1; margin:8px 0 28px; font-size:clamp(58px,8vw,118px); line-height:.8; letter-spacing:-.075em; }
+.verdict-card h2 em { color:var(--acid); font-style:normal; }
+.verdict-card p { position:relative; z-index:1; max-width:510px; font-size:18px; line-height:1.55; color:#d8d9d2; }
+.recommendation { position:absolute; z-index:1; bottom:50px; left:clamp(32px,5vw,72px); display:flex; flex-direction:column; gap:10px; }
+.recommendation strong { color:var(--acid); font-size:19px; }
+.recommendation small { max-width:560px; color:#9fa196; font:400 10px/1.4 DM Mono,monospace; }
+.result-section.is-loading .verdict-card::before { content:"DECIDING…"; position:absolute; inset:0; z-index:3; display:grid; place-items:center; background:var(--ink); color:var(--acid); font:500 13px DM Mono,monospace; letter-spacing:.12em; animation:pulse 1s infinite alternate; }
+@keyframes pulse { to { opacity:.55; } }
+footer { min-height:44px; display:flex; justify-content:space-between; gap:20px; padding:14px clamp(22px,4vw,64px); font:500 10px DM Mono,monospace; letter-spacing:.05em; text-transform:uppercase; }
+@media (max-width:800px) {
+  .hero, .result-section { grid-template-columns:1fr; }
+  .intro { border-right:0; border-bottom:1px solid var(--ink); }
+  .hero { min-height:0; }
+  .weather-strip { grid-template-columns:repeat(3,1fr); grid-template-rows:1fr; border-right:0; border-bottom:1px solid var(--ink); }
+  .weather-strip div { border-bottom:0; border-right:1px solid var(--ink); padding:20px; }
+  .weather-strip strong { font-size:36px; }
+  .verdict-card { min-height:590px; }
+  .mood-options { grid-template-columns:repeat(2,1fr); }
+  footer { flex-direction:column; }
+}
+@media (max-width:480px) {
+  .intro, .decision-form { padding:42px 22px; }
+  h1 { font-size:61px; }
+  .weather-strip span { font-size:9px; }
+  .weather-strip strong { font-size:29px; }
+  .verdict-card h2 { font-size:57px; }
+}

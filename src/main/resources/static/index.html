@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4ff53">
+    <title>Outside? — Let the weather decide</title>
+    <meta name="description" content="Tell us your city and mood. Get one crisp answer: should you go outside?">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar">
+    <a class="brand" href="/" aria-label="Outside home">OUTSIDE<span>?</span></a>
+    <div class="status"><i></i><span id="mode-status">CHECKING MODE</span></div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="intro">
+            <p class="eyebrow">A tiny decision machine</p>
+            <h1>Should you<br>go <em>outside?</em></h1>
+            <p class="lede">Can't make up your mind? We've got you!</p>
+        </div>
+
+        <form class="decision-form" id="decision-form">
+            <label class="field-label" for="location">Where are you?</label>
+            <div class="location-wrap">
+                <span aria-hidden="true">⌖</span>
+                <input id="location" name="location" autocomplete="address-level2" maxlength="80" placeholder="City or place" required autofocus>
+            </div>
+
+            <fieldset>
+                <legend>When are you free?</legend>
+                <div class="options">
+                    <input type="radio" name="time" id="now" value="NOW" checked><label for="now">Now</label>
+                    <input type="radio" name="time" id="lunch" value="LUNCH"><label for="lunch">Lunch</label>
+                    <input type="radio" name="time" id="evening" value="EVENING"><label for="evening">Evening</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>What's the mood?</legend>
+                <div class="options mood-options">
+                    <input type="radio" name="mood" id="relax" value="RELAX" checked><label for="relax">Relax</label>
+                    <input type="radio" name="mood" id="exercise" value="EXERCISE"><label for="exercise">Move</label>
+                    <input type="radio" name="mood" id="socialize" value="SOCIALIZE"><label for="socialize">Socialize</label>
+                    <input type="radio" name="mood" id="explore" value="EXPLORE"><label for="explore">Explore</label>
+                </div>
+            </fieldset>
+
+            <button class="decide-button" id="decide-button" type="submit"><span>DECIDE</span><b aria-hidden="true">↗</b></button>
+            <p class="form-error" id="form-error" role="alert"></p>
+        </form>
+    </section>
+
+    <section class="result-section" id="result" aria-live="polite">
+        <div class="weather-strip">
+            <div><span id="weather-location">Your city</span><strong id="weather-temperature">18°</strong></div>
+            <div><span>Rain</span><strong id="weather-rain">12%</strong></div>
+            <div><span>Wind</span><strong><span id="weather-wind">9</span> <small>km/h</small></strong></div>
+        </div>
+        <article class="verdict-card">
+            <div class="verdict-top"><span>THE VERDICT</span><span id="verdict-meta">DEMO · 84% YES</span></div>
+            <div class="verdict-icon" id="verdict-icon" aria-hidden="true">☀</div>
+            <h2><span id="headline">YES.</span><br><em id="accent">CLEAR YOUR HEAD.</em></h2>
+            <p id="verdict-message">Take a slow walk while the light is good. The conditions are doing you a favor.</p>
+            <div class="recommendation"><span>Your move</span><strong><span id="activity-label">TAKE A WALK</span> · <span id="duration">45 MIN</span></strong><small id="decision-note"></small></div>
+        </article>
+    </section>
+</main>
+
+<footer><span>Weather by Open-Meteo</span><span>Decisions by JEV + Spring</span><span>Built for GraalVM Native Image</span></footer>
+<script src="/app.js"></script>
+</body>
+</html>
