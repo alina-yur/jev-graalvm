@@ -5,6 +5,10 @@ A tiny weather-aware decision app. It combines live forecast data from
 JEV model. Without a key it remains fully usable with a transparent local demo
 decision.
 
+<div align="center">
+  <img src="src/main/resources/jev-graalvm-ui.png" alt="Outside? weather-aware decision app">
+</div>
+
 ## Run locally
 
 Demo mode needs no credentials:
