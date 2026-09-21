@@ -9,43 +9,27 @@ decision.
   <img src="src/main/resources/jev-graalvm-ui.png" alt="Outside? weather-aware decision app">
 </div>
 
-## Run locally
+## Build and run as GraalVM Native Image
 
-Demo mode needs no credentials:
+Demo mode needs no credentials.
 
-```bash
-mvn spring-boot:run
-```
-
-For real JEV decisions:
-
-```bash
-TYPESAFE_API_KEY="your-key" mvn spring-boot:run
-```
-
-Open <http://localhost:8080>. The badge in the top-right reports `DEMO MODE` or
-`JEV MODE`, so it is always clear which decision engine answered.
-
-## Build and test
-
-```bash
-mvn clean verify
-```
-
-## Native executable
-
-Use a GraalVM distribution with Native Image installed:
+Use a GraalVM distribution to build a native image:
 
 ```bash
 mvn -Pnative native:compile
 ./target/decision-service
 ```
 
+
 Pass the key at launch time to use JEV:
 
 ```bash
 TYPESAFE_API_KEY="your-key" ./target/decision-service
 ```
+
+Open <http://localhost:8080>. The badge in the top-right reports `DEMO MODE` or
+`JEV MODE`, so it is always clear which decision engine answered.
+
 
 ## How the decision works
 
